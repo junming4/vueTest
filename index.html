@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 2.0</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top"></nav>
+<div class="container" id="app">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Welcome Vue js 2.0</div>
+                <div class="panel-body">
+                    <h1>{{ message }}</h1>
+                    <input type="text" v-model="message" class="form-control">
+                    <h1>My Todo</h1>
+                    <ul class="list-group">
+                        <li class="list-group-item" v-for="_todo in todo">{{ _todo.title }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'hello world',
+            todo: [{id: 1, title: 'myClass is todo'}]
+        }
+    });
+</script>
+</html>

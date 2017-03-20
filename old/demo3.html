@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js中javascript的表达式</title>
+</head>
+<body>
+<div id="example-1">
+    {{ number + 1 }}
+    <br>
+    {{ ok ? 'YES' : 'NO' }}<br>
+    {{ message.split('').reverse().join('') }}
+    <p v-if="greeting">Hello!</p>
+    <br>
+    <a v-bind:href="url" target="_blank">指向</a>
+    <br>
+    <a href="javascript:void(0);" v-on:click="doSomeThing">do it </a>
+</div>
+
+</body>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript"> e
+    new Vue({
+        el: '#example-1',
+        data: {
+            number: 4,
+            ok: false,
+            message: 'wo do it now',
+            greeting: false,
+            url: 'http://baidu.com'
+        },
+        methods:{
+            doSomeThing:function () {
+                console.log('go to school');
+            }
+        }
+    })
+</script>
+</html>

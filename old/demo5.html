@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染处理</title>
+</head>
+<body>
+<div id="example-1">
+    <span v-for="n in 10">{{ n }} </span>
+</div>
+
+<div id="example-2">
+    <button v-on:click="greet">Greet</button><br>
+    <button v-on:click="say('hi')">Say Hi</button><br>
+    <button v-on:click="say('what')">Say What</button> <br>
+    <button v-on:click="say2('hello!', $event)">Submit</button>
+</div>
+</body>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+      el: '#example-1'
+    });
+
+    var vm = new Vue({
+        el : '#example-2',
+        data : {
+            name : 'vue.js'
+        },
+        methods:{
+            greet:function (event) {
+                alert('hello '+this.name);
+                alert(event.target.tagName)
+            },
+            say:function (msg) {
+                alert(msg);
+            },
+            say2:function (msg, event) {
+                alert(msg);
+            }
+        }
+    });
+</script>
+</html>

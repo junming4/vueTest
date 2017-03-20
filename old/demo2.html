@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正式开发-基本功能</title>
+</head>
+<body>
+
+<div id="example-1">
+    {{ name }}
+    <br>
+    <input type="text" v-model="name">
+</div>
+
+<div id="example-2">
+    <p v-if="greeting">hello vue.js</p>
+</div>
+
+<div id="example-3">
+    <p>hello3 vue.js</p>
+</div>
+
+<div id="example-4">
+    <span>{{ msg }}</span>
+</div>
+
+
+</body>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+    var exampleData = {
+        name: 'test hello'
+    };
+
+    new Vue({
+        el: '#example-1',
+        data: exampleData
+    });
+
+    new Vue({
+        el: '#example-2',
+        data: {
+            greeting: true
+        }
+    });
+
+    var data = {a: 1};
+
+    var vm = new Vue({
+        el: '#example-3',
+        data: data
+    });
+
+    console.log(data.a === vm.a);
+
+    vm.a = 3; //data.a也是3，vm中数据会影响到data数据
+    console.log(data.a);
+    data.a = 5; //vm.a也是5， data数据修改也会影响奥vm数据，印证了双向绑定机制
+    console.log(vm.a);
+
+    //等价测试
+    console.log('等价测试!');
+    console.log(vm.$data === data); //vm.$data 会等于data
+    console.log('Id等价');
+    console.log(vm.$el === document.getElementById('example-1')); //vm.$sel会等价于document.getElementById
+    //实例方法
+    vm.$watch('a', function (newVal, oldVal) {   //这个回调将在 `vm.a` 改变后调用
+        console.log('自动修改');
+    });
+    vm.a = 8; //这里会触发$watch函数
+
+    //生命周期
+    var vm2 = new Vue({
+        data: {
+            a: 1
+        },
+        created: function () {
+            console.log('a is: ' + this.a)
+        }
+    });
+
+    //测试案例2
+    new Vue({
+        el: '#example-4',
+        data: {
+            msg: '测试demo'
+        }
+    });
+
+
+
+
+
+</script>
+</html>
+

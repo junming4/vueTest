@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单绑定</title>
+</head>
+<body>
+<div id="example-1">
+    <span>Message is: {{ message }}</span><br/>
+    <input type="text" placeholder="edit me" v-model="message">
+    <br>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+    <h1>checkbox 测试</h1>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames &#124; json }}</span>
+    <h1>radio测试</h1>
+    <input type="radio" id="one" value="One" v-model="picked" checked>
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+    <h1>select 测试</h1>
+    <select v-model="selected">
+        <option selected>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+    <h1>select 测试2</h1>
+    <select v-model="selected2" multiple>
+        <option selected>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <br>
+    <span>Selected: {{ selected2 &#124; json }}</span>
+</div>
+
+<!--案例二-->
+<div id="example-2">
+    <select v-model="selected">
+        <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+</div>
+<h1>绑定部分</h1>
+<div id="example-3">
+    <input type="checkbox" v-model="toggle" v-bind:true-value="a" v-bind:false-value="b">
+</div>
+
+<h1>测试部分</h1>
+
+<div id="example-4">
+    <input v-model="msg" lazy>
+</div>
+
+</body>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#example-1',
+        data: {
+            message: '',
+            checked: false,
+            checkedNames: [],
+            picked: false,
+            selected: '',
+            'selected2': []
+        }
+    });
+
+    /*案例二*/
+    new Vue({
+        el: '#example-2',
+        data: {
+            selected: 'A',
+            options: [
+                {text: 'One', value: 'A'},
+                {text: 'Two', value: 'B'},
+                {text: 'Three', value: 'C'}
+            ]
+        }
+    });
+
+    new Vue({
+        el: '#example-3',
+        data: {
+            toggle: true
+        }
+    });
+
+</script>
+</html>
